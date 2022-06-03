@@ -1,12 +1,12 @@
 import React from "react";
 
-const Home = () => {
+const Pixelbility = () => {
   return (
     <main>
-      <h1>Welcome to My App!</h1>
+      <h1>Welcome Pixelbility!</h1>
       <p>Things Will Be Here Soon!</p>
     </main>
   );
 };
 
-export default Home;
+export default Pixelbility;
