@@ -41,3 +41,58 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+/**********************************/
+/*HEADER*/
+/**********************************/
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #222;
+  align-items: center;
+  padding: 0 2.4rem;
+}
+
+.logo {
+  height: 2.4rem;
+}
+/**********************************/
+/*NAV*/
+/**********************************/
+
+.main-nav {
+  list-style: none;
+  display: flex;
+  gap: 3.2rem;
+}
+
+.main-nav a:link,
+.main-nav a:visited {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.2rem;
+  transition: all 0.3s;
+}
+
+.main-nav a:visited:hover {
+  color: rgb(168, 219, 219);
+}
+
+/**********************************/
+/*MAIN APP PANELS*/
+/**********************************/
+
+.main-app-panel {
+  background-color: #999;
+}
+
+.main-app-panel-1 {
+  display: flex;
+  background-color: #777;
+  justify-content: space-between;
+}
+
+.toolMainViewPanel {
+  background-color: #fff;
+}
