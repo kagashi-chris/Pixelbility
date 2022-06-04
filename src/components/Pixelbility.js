@@ -14,12 +14,10 @@ export default class Pixelbility extends Component {
   }
 
   imgHandler(imgFile) {
-    console.log("HANDLING IMAGE");
     this.setState({ ...this.state, img: imgFile });
   }
 
   render() {
-    console.log(this.state.image);
     return (
       <div className="main-app-panel">
         <div className="main-app-panel-1">
