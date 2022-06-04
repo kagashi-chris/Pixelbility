@@ -4,14 +4,11 @@ import Pixelbility from "./components/Pixelbility";
 import { Route, Routes } from "react-router-dom";
 
 const AppRoutes = () => {
-  const home = Home();
-  const pixelbility = Pixelbility();
-
   return (
     <div>
       <Routes>
-        <Route path="/" element={home} />
-        <Route path="/pixelbility" element={pixelbility} />
+        <Route path="/" element={<Home />} />
+        <Route path="/pixelbility" element={<Pixelbility />} />
       </Routes>
     </div>
   );

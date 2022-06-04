@@ -1,22 +1,39 @@
-import React from "react";
+import React, { Component } from "react";
 import ToolImportImagePanel from "./ToolImportImagePanel";
 import ToolMainViewPanel from "./ToolMainViewPanel";
 import ToolEditLayersPanel from "./ToolEditLayersPanel";
 import ToolGeneratedImagePanel from "./ToolGeneratedImagePanel";
 
-const Pixelbility = () => {
-  return (
-    <div className="main-app-panel">
-      <div className="main-app-panel-1">
-        <ToolImportImagePanel />
-        <ToolMainViewPanel />
-        <ToolEditLayersPanel />
-      </div>
-      <div className="main-app-panel-2">
-        <ToolGeneratedImagePanel />
-      </div>
-    </div>
-  );
-};
+export default class Pixelbility extends Component {
+  constructor() {
+    super();
+    this.state = {
+      img: "",
+    };
+    this.imgHandler = this.imgHandler.bind(this);
+  }
 
-export default Pixelbility;
+  imgHandler(imgFile) {
+    console.log("HANDLING IMAGE");
+    this.setState({ ...this.state, img: imgFile });
+  }
+
+  render() {
+    console.log(this.state.image);
+    return (
+      <div className="main-app-panel">
+        <div className="main-app-panel-1">
+          <ToolImportImagePanel
+            img={this.state.img}
+            imgHandler={this.imgHandler}
+          />
+          <ToolMainViewPanel img={this.state.img} />
+          <ToolEditLayersPanel />
+          <ToolGeneratedImagePanel />
+        </div>
+      </div>
+    );
+  }
+}
+
+// export default Pixelbility;
