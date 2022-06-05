@@ -101,9 +101,21 @@ form div {
   background-color: #333;
   grid-column: 2/-2;
   display: flex;
+  padding: 2%;
 }
 
-.toolMainViewPanel img {
+.toolMainViewPanel canvas {
+  margin: auto;
+  background-color: #fff;
+  /* width: 55%;
+  height: 0;
+  padding-bottom: 55%; */
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* .toolMainViewPanel img {
   margin-top: 1rem;
   margin-bottom: 1rem;
   margin-left: auto;
@@ -111,7 +123,7 @@ form div {
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
-}
+} */
 
 .toolImportImagePanel {
   background-color: #444;

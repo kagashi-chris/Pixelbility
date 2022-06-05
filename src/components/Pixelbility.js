@@ -8,7 +8,7 @@ export default class Pixelbility extends Component {
   constructor() {
     super();
     this.state = {
-      img: "",
+      img: null,
     };
     this.imgHandler = this.imgHandler.bind(this);
   }
@@ -26,7 +26,7 @@ export default class Pixelbility extends Component {
             imgHandler={this.imgHandler}
           />
           <ToolMainViewPanel img={this.state.img} />
-          <ToolEditLayersPanel />
+          <ToolEditLayersPanel img={this.state.img} />
           <ToolGeneratedImagePanel />
         </div>
       </div>
