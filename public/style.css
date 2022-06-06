@@ -102,14 +102,12 @@ form div {
   grid-column: 2/-2;
   display: flex;
   padding: 2%;
+  position: relative;
 }
 
 .toolMainViewPanel canvas {
   margin: auto;
   background-color: #fff;
-  /* width: 55%;
-  height: 0;
-  padding-bottom: 55%; */
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
