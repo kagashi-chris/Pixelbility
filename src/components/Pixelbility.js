@@ -13,8 +13,8 @@ export default class Pixelbility extends Component {
     this.imgHandler = this.imgHandler.bind(this);
   }
 
-  imgHandler(imgFile) {
-    this.setState({ ...this.state, img: imgFile });
+  imgHandler(targetName, targetData) {
+    this.setState({ ...this.state, [targetName]: targetData });
   }
 
   render() {

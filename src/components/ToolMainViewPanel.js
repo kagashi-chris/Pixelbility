@@ -8,7 +8,6 @@ export default class ToolMainViewPanel extends Component {
   }
 
   componentDidUpdate() {
-    console.log("inside component did update");
     const ctx = this.canvasRef.current.getContext("2d");
     ctx.imageSmoothingEnabled = false;
     ctx.drawImage(this.props.img, 0, 0, ctx.canvas.width, ctx.canvas.height);

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import LayerPanel from "./LayerPanel";
 
 export default class ToolEditLayersPanel extends Component {
   constructor(props) {
@@ -8,11 +9,7 @@ export default class ToolEditLayersPanel extends Component {
   }
 
   handleImageSeperation() {
-    const img = new Image();
-    img.onload = function () {
-      console.log(this.width + "x" + this.height);
-    };
-    img.src = this.props.img;
+    console.log("button pressed");
   }
 
   render() {
