@@ -113,16 +113,6 @@ form div {
   image-rendering: crisp-edges;
 }
 
-/* .toolMainViewPanel img {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  margin-left: auto;
-  margin-right: auto;
-  image-rendering: pixelated;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: crisp-edges;
-} */
-
 .toolImportImagePanel {
   background-color: #444;
   grid-column: 1/2;
@@ -130,6 +120,10 @@ form div {
 
 .toolEditLayersPanel {
   background-color: #555;
+}
+
+#seperate-image:hover {
+  background-color: #777;
 }
 
 #seperate-image {
@@ -146,6 +140,26 @@ form div {
   border-left: solid 0.2rem #222;
   border-right: solid 0.2rem #222;
   border-bottom: solid 0.2rem #222;
+}
+
+.layerPanel {
+  margin-top: 2px;
+  width: 100%;
+  height: 5rem;
+  color: #fff;
+  background-color: #222;
+  display: flex;
+  align-items: center;
+}
+
+.layerPanelElements {
+  margin-left: 1rem;
+}
+
+.layerImage {
+  height: 48px;
+  width: 48px;
+  background-color: #fff;
 }
 
 #layer-container-footer {

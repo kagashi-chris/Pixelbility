@@ -4,8 +4,13 @@ import LayerPanel from "./LayerPanel";
 export default class ToolEditLayersPanel extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { layerImages: [], seperatedImage: false };
     this.handleImageSeperation = this.handleImageSeperation.bind(this);
+  }
+
+  componentDidUpdate() {
+    if (this.props.img.srcImage !== null) {
+    }
   }
 
   handleImageSeperation() {
@@ -18,7 +23,9 @@ export default class ToolEditLayersPanel extends Component {
         <button id="seperate-image" onClick={this.handleImageSeperation}>
           Seperate Image
         </button>
-        <div id="layer-container"></div>
+        <div id="layer-container">
+          <LayerPanel img={this.props.img} />
+        </div>
         <div id="layer-container-footer"></div>
       </div>
     );

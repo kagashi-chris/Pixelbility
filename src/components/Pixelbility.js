@@ -8,13 +8,15 @@ export default class Pixelbility extends Component {
   constructor() {
     super();
     this.state = {
-      img: null,
+      img: { srcImage: null },
     };
     this.imgHandler = this.imgHandler.bind(this);
   }
 
   imgHandler(targetName, targetData) {
-    this.setState({ ...this.state, [targetName]: targetData });
+    this.setState({ ...this.state, [targetName]: targetData }, () => {
+      console.log(this.state);
+    });
   }
 
   render() {

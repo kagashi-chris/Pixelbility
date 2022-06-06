@@ -15,7 +15,7 @@ export default class ToolImportImagePanel extends Component {
     FR.onload = function (event) {
       const newImage = new Image();
       newImage.onload = function () {
-        props.imgHandler("img", newImage);
+        props.imgHandler("img", { srcImage: newImage });
       };
       newImage.src = event.target.result;
     };
