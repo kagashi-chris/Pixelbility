@@ -41,6 +41,10 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.hidden {
+  visibility: hidden;
+}
 /**********************************/
 /*HEADER*/
 /**********************************/
@@ -131,6 +135,12 @@ form div {
   height: 2.5rem;
   background-color: #333;
   color: white;
+}
+
+#tempCanvas {
+  position: absolute;
+  top: 500px;
+  background-color: #fff;
 }
 
 #layer-container {

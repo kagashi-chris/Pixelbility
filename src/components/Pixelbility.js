@@ -11,11 +11,12 @@ export default class Pixelbility extends Component {
       img: { srcImage: null },
     };
     this.imgHandler = this.imgHandler.bind(this);
+    this.canvasRef = React.createRef(null);
   }
 
   imgHandler(targetName, targetData) {
     this.setState({ ...this.state, [targetName]: targetData }, () => {
-      console.log(this.state);
+      console.log("updated state in main");
     });
   }
 
@@ -23,12 +24,18 @@ export default class Pixelbility extends Component {
     return (
       <div className="main-app-panel">
         <div className="main-app-panel-1">
+          {/* for resizing and editing image */}
+          <canvas ref={this.canvasRef} id="tempCanvas" className=""></canvas>
           <ToolImportImagePanel
             img={this.state.img}
             imgHandler={this.imgHandler}
           />
           <ToolMainViewPanel img={this.state.img} />
-          <ToolEditLayersPanel img={this.state.img} />
+          <ToolEditLayersPanel
+            img={this.state.img}
+            imgHandler={this.imgHandler}
+            canvas={this.canvasRef}
+          />
           <ToolGeneratedImagePanel />
         </div>
       </div>
