@@ -67,19 +67,28 @@ export default class ToolEditLayersPanel extends Component {
           //pixelLocation[0] holds x value and [1] holds y value
           newCtx.fillRect(pixelLocation[0], pixelLocation[1], 1, 1);
         }
-        canvasList.push(newCtx);
+        canvasList.push(newCanvas);
       }
-      console.log(canvasList);
+      this.setState({
+        ...this.state,
+        layerImages: [...this.state.layerImages, ...canvasList],
+      });
     }
   }
 
+  //need to update this to read from props passed in instead of in this state
   render() {
+    console.log("dom console state", this.state);
     return (
       <div className="toolEditLayersPanel">
         <button id="seperate-image" onClick={this.handleImageSeperation}>
           Seperate Image
         </button>
-        <div id="layer-container"></div>
+        <div id="layer-container">
+          {this.state.layerImages.map((ctx, idx) => {
+            return <LayerPanel key={idx} img={ctx} />;
+          })}
+        </div>
         <div id="layer-container-footer"></div>
       </div>
     );

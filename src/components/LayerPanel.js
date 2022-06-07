@@ -8,16 +8,12 @@ export default class LayerPanel extends Component {
   }
 
   componentDidMount() {
-    if (this.props.img.srcImage) {
+    console.log(this.props);
+    if (this.props.img) {
+      console.log("got image");
       const ctx = this.canvasRef.current.getContext("2d");
       ctx.imageSmoothingEnabled = false;
-      ctx.drawImage(
-        this.props.img.srcImage,
-        0,
-        0,
-        ctx.canvas.width,
-        ctx.canvas.height
-      );
+      ctx.drawImage(this.props.img, 0, 0, ctx.canvas.width, ctx.canvas.height);
     }
   }
 
