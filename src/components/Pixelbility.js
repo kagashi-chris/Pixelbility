@@ -8,7 +8,12 @@ export default class Pixelbility extends Component {
   constructor() {
     super();
     this.state = {
-      img: { srcImage: null },
+      img: {
+        srcImage: null,
+        layerImages: [],
+        displayImage: [],
+        selectedImgIdx: 0,
+      },
     };
     this.imgHandler = this.imgHandler.bind(this);
     this.canvasRef = React.createRef(null);
@@ -16,7 +21,7 @@ export default class Pixelbility extends Component {
 
   imgHandler(targetName, targetData) {
     this.setState({ ...this.state, [targetName]: targetData }, () => {
-      console.log("updated state in main");
+      console.log("updated state", this.state);
     });
   }
 
@@ -36,7 +41,10 @@ export default class Pixelbility extends Component {
             imgHandler={this.imgHandler}
             canvas={this.canvasRef}
           />
-          <ToolGeneratedImagePanel />
+          <ToolGeneratedImagePanel
+            img={this.state.img}
+            imgHandler={this.imgHandler}
+          />
         </div>
       </div>
     );

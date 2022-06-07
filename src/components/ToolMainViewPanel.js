@@ -19,12 +19,6 @@ export default class ToolMainViewPanel extends Component {
         ctx.canvas.height
       );
     }
-
-    // console.log(ctx.getImageData(352, 352, 1, 1));
-    // let saveImage = ctx.canvas
-    //   .toDataURL("image/png")
-    //   .replace("image/png", "image/octet-stream");
-    // window.location.href = saveImage;
   }
 
   render() {

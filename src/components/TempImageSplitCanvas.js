@@ -18,11 +18,6 @@ export default class TempImageSplitCanvas extends Component {
         ctx.canvas.width,
         ctx.canvas.height
       );
-      for (let w = 0; w < ctx.canvas.width; w++) {
-        for (let h = 0; h < ctx.canvas.height; h++) {
-          console.log(ctx.getImageData(w, h, 1, 1).data.slice(0, 4));
-        }
-      }
     }
   }
 

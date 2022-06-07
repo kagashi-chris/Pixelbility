@@ -18,13 +18,11 @@ export default class ToolEditLayersPanel extends Component {
       let pixelColorLocation = {};
       let canvasList = [];
       //convert image to canvas for image proccessing
-      console.log("handle image separate");
       const newImg = this.props.img.srcImage;
       const newImgWidth = newImg.width;
       const newImgHeight = newImg.height;
       let canvas = this.props.canvas.current;
       let ctx = canvas.getContext("2d");
-      console.log(ctx);
       ctx.imageSmoothingEnabled = false;
       ctx.canvas.width = newImgWidth;
       ctx.canvas.height = newImgHeight;
@@ -69,23 +67,23 @@ export default class ToolEditLayersPanel extends Component {
         }
         canvasList.push(newCanvas);
       }
-      this.setState({
-        ...this.state,
-        layerImages: [...this.state.layerImages, ...canvasList],
+      this.props.imgHandler("img", {
+        ...this.props.img,
+        layerImages: [...this.props.img.layerImages, ...canvasList],
+        displayImage: [...this.props.img.displayImage, canvasList],
       });
     }
   }
 
   //need to update this to read from props passed in instead of in this state
   render() {
-    console.log("dom console state", this.state);
     return (
       <div className="toolEditLayersPanel">
         <button id="seperate-image" onClick={this.handleImageSeperation}>
           Seperate Image
         </button>
         <div id="layer-container">
-          {this.state.layerImages.map((ctx, idx) => {
+          {this.props.img.layerImages.map((ctx, idx) => {
             return <LayerPanel key={idx} img={ctx} />;
           })}
         </div>

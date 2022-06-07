@@ -8,9 +8,7 @@ export default class LayerPanel extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
     if (this.props.img) {
-      console.log("got image");
       const ctx = this.canvasRef.current.getContext("2d");
       ctx.imageSmoothingEnabled = false;
       ctx.drawImage(this.props.img, 0, 0, ctx.canvas.width, ctx.canvas.height);
@@ -23,8 +21,8 @@ export default class LayerPanel extends Component {
         <canvas
           className="layerImage layerPanelElements"
           ref={this.canvasRef}
-          width={48}
-          height={48}
+          width={52}
+          height={52}
         ></canvas>
         <div className="layerPanelElements">SOME TEXT</div>
       </div>
