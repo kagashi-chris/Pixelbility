@@ -21,7 +21,12 @@ export default class Pixelbility extends Component {
 
   imgHandler(targetName, targetData) {
     this.setState({ ...this.state, [targetName]: targetData }, () => {
-      console.log("updated state", this.state);
+      if (this.state.img.displayImage[0] !== undefined) {
+        console.log(
+          "updated state",
+          this.state.img.displayImage[0][0].getContext("2d")
+        );
+      }
     });
   }
 

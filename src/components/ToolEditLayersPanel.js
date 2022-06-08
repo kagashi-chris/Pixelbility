@@ -78,7 +78,13 @@ export default class ToolEditLayersPanel extends Component {
   //need to update this to read from props passed in instead of in this state
   render() {
     const idx = parseInt(this.props.img.selectedImgIdx);
-    const displayImages = this.props.img.displayImage[idx];
+    let displayImages = this.props.img.displayImage[idx];
+    if (this.props.img.displayImage[0])
+      console.log("TEST!", this.props.img.displayImage[0][0].getContext("2d"));
+    if (this.props.img.displayImage[1])
+      console.log("TEST!", this.props.img.displayImage[1][0].getContext("2d"));
+    if (this.props.img.displayImage[2])
+      console.log("TEST!", this.props.img.displayImage[2][0].getContext("2d"));
 
     return (
       <div className="toolEditLayersPanel">
@@ -88,9 +94,11 @@ export default class ToolEditLayersPanel extends Component {
         <div id="layer-container">
           {displayImages === undefined
             ? ""
-            : displayImages.map((img, idx) => {
-                return <LayerPanel key={idx} img={img} />;
-              })}
+            : this.props.img.displayImage[this.props.img.selectedImgIdx].map(
+                (img, idx) => {
+                  return <LayerPanel key={idx} img={img} />;
+                }
+              )}
         </div>
         <div id="layer-container-footer"></div>
       </div>

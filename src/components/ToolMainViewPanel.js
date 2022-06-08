@@ -8,8 +8,11 @@ export default class ToolMainViewPanel extends Component {
   }
 
   componentDidUpdate() {
-    if (this.props.img.srcImage !== null) {
-      const ctx = this.canvasRef.current.getContext("2d");
+    const ctx = this.canvasRef.current.getContext("2d");
+    if (
+      this.props.img.srcImage !== null &&
+      this.props.img.displayImage.length === 0
+    ) {
       ctx.imageSmoothingEnabled = false;
       ctx.drawImage(
         this.props.img.srcImage,
@@ -18,6 +21,11 @@ export default class ToolMainViewPanel extends Component {
         ctx.canvas.width,
         ctx.canvas.height
       );
+    } else if (this.props.img.displayImage.length !== 0) {
+      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+      this.props.img.displayImage[this.props.img.selectedImgIdx].map((img) => {
+        ctx.drawImage(img, 0, 0, ctx.canvas.width, ctx.canvas.height);
+      });
     }
   }
 
