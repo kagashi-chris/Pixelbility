@@ -24,7 +24,12 @@ export default class GeneratedImage extends Component {
             ? "Original"
             : this._reactInternals.key}
         </div>
-        <canvas ref={this.canvasRef} width={126} height={126}></canvas>
+        <canvas
+          ref={this.canvasRef}
+          width={126}
+          height={126}
+          key={this._reactInternals.key}
+        ></canvas>
       </div>
     );
   }

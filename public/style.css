@@ -150,6 +150,7 @@ form div {
   border-left: solid 0.2rem #222;
   border-right: solid 0.2rem #222;
   border-bottom: solid 0.2rem #222;
+  overflow-y: auto;
 }
 
 .layerPanel {

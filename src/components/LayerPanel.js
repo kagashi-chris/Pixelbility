@@ -14,6 +14,11 @@ export default class LayerPanel extends Component {
       ctx.drawImage(this.props.img, 0, 0, ctx.canvas.width, ctx.canvas.height);
     }
   }
+  componentDidUpdate() {
+    const ctx = this.canvasRef.current.getContext("2d");
+    ctx.imageSmoothingEnabled = false;
+    ctx.drawImage(this.props.img, 0, 0, ctx.canvas.width, ctx.canvas.height);
+  }
 
   render() {
     return (
@@ -24,7 +29,7 @@ export default class LayerPanel extends Component {
           width={52}
           height={52}
         ></canvas>
-        <div className="layerPanelElements">SOME TEXT</div>
+        <input type="color" className="layerPanelElements" />
       </div>
     );
   }

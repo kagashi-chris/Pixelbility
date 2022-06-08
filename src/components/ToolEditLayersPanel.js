@@ -69,23 +69,28 @@ export default class ToolEditLayersPanel extends Component {
       }
       this.props.imgHandler("img", {
         ...this.props.img,
-        layerImages: [...this.props.img.layerImages, ...canvasList],
         displayImage: [...this.props.img.displayImage, canvasList],
+        layerImages: [...this.props.img.layerImages, ...canvasList],
       });
     }
   }
 
   //need to update this to read from props passed in instead of in this state
   render() {
+    const idx = parseInt(this.props.img.selectedImgIdx);
+    const displayImages = this.props.img.displayImage[idx];
+
     return (
       <div className="toolEditLayersPanel">
         <button id="seperate-image" onClick={this.handleImageSeperation}>
           Seperate Image
         </button>
         <div id="layer-container">
-          {this.props.img.layerImages.map((ctx, idx) => {
-            return <LayerPanel key={idx} img={ctx} />;
-          })}
+          {displayImages === undefined
+            ? ""
+            : displayImages.map((img, idx) => {
+                return <LayerPanel key={idx} img={img} />;
+              })}
         </div>
         <div id="layer-container-footer"></div>
       </div>

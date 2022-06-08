@@ -8,13 +8,15 @@ export default class ToolGeneratedImagePanel extends Component {
     this.generateImage = this.generateImage.bind(this);
     this.rgbToHex = this.rgbToHex.bind(this);
     this.componentToHex = this.componentToHex.bind(this);
+    this.handleElementClicked = this.handleElementClicked.bind(this);
+  }
+
+  handleElementClicked(idx) {
+    this.props.imgHandler("img", { ...this.props.img, selectedImgIdx: idx });
   }
 
   generateImage() {
-    console.log("generating 1 image");
-    console.log(this.props.img);
     let newDisplayCanvasArr = [...this.props.img.layerImages];
-    console.log(newDisplayCanvasArr);
 
     newDisplayCanvasArr.forEach((canvas) => {
       let ctx = canvas.getContext("2d");
@@ -26,6 +28,7 @@ export default class ToolGeneratedImagePanel extends Component {
       ctx.fillStyle = hex;
       ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     });
+
     this.props.imgHandler("img", {
       ...this.props.img,
       displayImage: [...this.props.img.displayImage, newDisplayCanvasArr],
@@ -54,7 +57,11 @@ export default class ToolGeneratedImagePanel extends Component {
         </div>
         <div id="generate-image-main-content">
           {this.props.img.displayImage.map((img, idx) => {
-            return <GeneratedImage key={idx} images={img} />;
+            return (
+              <div onClick={() => this.handleElementClicked(idx)} key={idx}>
+                <GeneratedImage key={idx} images={img} />
+              </div>
+            );
           })}
         </div>
       </div>
