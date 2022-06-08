@@ -17,6 +17,7 @@ export default class ToolEditLayersPanel extends Component {
     ) {
       let pixelColorLocation = {};
       let canvasList = [];
+      let constraintlist = [];
       //convert image to canvas for image proccessing
       const newImg = this.props.img.srcImage;
       const newImgWidth = newImg.width;
@@ -67,10 +68,17 @@ export default class ToolEditLayersPanel extends Component {
         }
         canvasList.push(newCanvas);
       }
+
+      //initialize number of constraints base on number of layers
+      for (let i = 0; i < canvasList.length; i++) {
+        constraintlist.push({ keepOriginColor: false, colorConstraints: [] });
+      }
+
       this.props.imgHandler("img", {
         ...this.props.img,
         displayImage: [...this.props.img.displayImage, canvasList],
         layerImages: [...this.props.img.layerImages, ...canvasList],
+        constraints: [...this.props.img.constraints, ...constraintlist],
       });
     }
   }

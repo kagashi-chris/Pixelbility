@@ -31,7 +31,10 @@ export default class LayerPanel extends Component {
       <div className="layerPanel">
         <button onClick={this.handleOpenEditPanel}>{`<`}</button>
         {this.state.showPanel === true ? (
-          <EditLayerPanel handleOpenEditPanel={this.handleOpenEditPanel} />
+          <EditLayerPanel
+            handleOpenEditPanel={this.handleOpenEditPanel}
+            img={this.props}
+          />
         ) : (
           ""
         )}

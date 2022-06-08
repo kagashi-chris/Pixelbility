@@ -177,6 +177,21 @@ form div {
   position: absolute;
   background-color: #222;
   transform: translate(-16rem, 7.5rem);
+  align-content: center;
+}
+.edit-panel label input {
+  margin: 0 auto;
+}
+
+.edit-panel-elements {
+  margin-top: 2rem;
+}
+
+.colors-container {
+  margin-top: 1rem;
+  border-top: solid 1px white;
+  width: 100%;
+  height: 50%;
 }
 
 .layerPanelElements {

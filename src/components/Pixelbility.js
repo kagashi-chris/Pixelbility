@@ -13,6 +13,7 @@ export default class Pixelbility extends Component {
         layerImages: [],
         displayImage: [],
         selectedImgIdx: 0,
+        constraints: [],
       },
     };
     this.imgHandler = this.imgHandler.bind(this);
@@ -22,10 +23,7 @@ export default class Pixelbility extends Component {
   imgHandler(targetName, targetData) {
     this.setState({ ...this.state, [targetName]: targetData }, () => {
       if (this.state.img.displayImage[0] !== undefined) {
-        console.log(
-          "updated state",
-          this.state.img.displayImage[0][0].getContext("2d")
-        );
+        console.log("updated state", this.state.img);
       }
     });
   }
