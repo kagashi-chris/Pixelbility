@@ -20,7 +20,6 @@ export default class ToolGeneratedImagePanel extends Component {
     let testArr = [];
 
     this.props.img.layerImages.forEach((canvas) => {
-      // let ctx = canvas.getContext("2d");
       const r = Math.floor(Math.random() * 256);
       const g = Math.floor(Math.random() * 256);
       const b = Math.floor(Math.random() * 256);
@@ -34,12 +33,7 @@ export default class ToolGeneratedImagePanel extends Component {
       newCtx.fillStyle = hex;
       newCtx.fillRect(0, 0, newCtx.canvas.width, newCtx.canvas.height);
       testArr.push(newCanvas);
-      // ctx.globalCompositeOperation = "source-in";
-      // ctx.fillStyle = hex;
-      // ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     });
-    console.log("inside generate image");
-    console.log(this.props.img.displayImage[0][0].getContext("2d"));
 
     this.props.imgHandler("img", {
       ...this.props.img,

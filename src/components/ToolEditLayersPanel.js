@@ -79,12 +79,6 @@ export default class ToolEditLayersPanel extends Component {
   render() {
     const idx = parseInt(this.props.img.selectedImgIdx);
     let displayImages = this.props.img.displayImage[idx];
-    if (this.props.img.displayImage[0])
-      console.log("TEST!", this.props.img.displayImage[0][0].getContext("2d"));
-    if (this.props.img.displayImage[1])
-      console.log("TEST!", this.props.img.displayImage[1][0].getContext("2d"));
-    if (this.props.img.displayImage[2])
-      console.log("TEST!", this.props.img.displayImage[2][0].getContext("2d"));
 
     return (
       <div className="toolEditLayersPanel">

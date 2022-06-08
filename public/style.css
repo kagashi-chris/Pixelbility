@@ -22,6 +22,7 @@ body {
   line-height: 1;
   font-weight: 400;
   color: #555;
+  position: relative;
 }
 
 a {
@@ -161,6 +162,21 @@ form div {
   background-color: #222;
   display: flex;
   align-items: center;
+}
+
+.layerPanel button {
+  width: 2rem;
+  height: 100%;
+  background-color: #333;
+  color: #fff;
+}
+
+.edit-panel {
+  width: 16rem;
+  height: 20rem;
+  position: absolute;
+  background-color: #222;
+  transform: translate(-16rem, 7.5rem);
 }
 
 .layerPanelElements {
