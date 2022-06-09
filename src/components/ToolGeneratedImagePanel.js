@@ -16,14 +16,29 @@ export default class ToolGeneratedImagePanel extends Component {
   }
 
   generateImage() {
-    let newDisplayCanvasArr = [...this.props.img.layerImages];
-    let testArr = [];
+    let arr = [];
+    let currCanvasIdx = 0;
 
     this.props.img.layerImages.forEach((canvas) => {
-      const r = Math.floor(Math.random() * 256);
-      const g = Math.floor(Math.random() * 256);
-      const b = Math.floor(Math.random() * 256);
-      const hex = this.rgbToHex(r, g, b);
+      const constraints = this.props.img.constraints[currCanvasIdx];
+      let hex = "";
+
+      if (constraints.keepOriginColor === true) {
+        let orginalCanvas = this.props.img.displayImage[0][currCanvasIdx];
+        let orignalCtx = orginalCanvas.getContext("2d");
+        hex = orignalCtx.fillStyle;
+      } else if (constraints.colorConstraints.length > 0) {
+        const randNumber = Math.floor(
+          Math.random() * constraints.colorConstraints.length
+        );
+        hex = constraints.colorConstraints[randNumber];
+      } else {
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        hex = this.rgbToHex(r, g, b);
+      }
+
       let newCanvas = document.createElement("canvas");
       let newCtx = newCanvas.getContext("2d");
       newCtx.canvas.width = canvas.width;
@@ -32,12 +47,13 @@ export default class ToolGeneratedImagePanel extends Component {
       newCtx.globalCompositeOperation = "source-in";
       newCtx.fillStyle = hex;
       newCtx.fillRect(0, 0, newCtx.canvas.width, newCtx.canvas.height);
-      testArr.push(newCanvas);
+      arr.push(newCanvas);
+      currCanvasIdx++;
     });
 
     this.props.imgHandler("img", {
       ...this.props.img,
-      displayImage: [...this.props.img.displayImage, testArr],
+      displayImage: [...this.props.img.displayImage, arr],
     });
   }
 

@@ -98,7 +98,7 @@ export default class ToolEditLayersPanel extends Component {
             ? ""
             : this.props.img.displayImage[this.props.img.selectedImgIdx].map(
                 (img, idx) => {
-                  return <LayerPanel key={idx} img={img} />;
+                  return <LayerPanel key={idx} img={img} prop={this.props} />;
                 }
               )}
         </div>

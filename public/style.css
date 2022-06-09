@@ -127,6 +127,12 @@ form div {
   background-color: #555;
 }
 
+.color-box {
+  border: solid 2px white;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
 #seperate-image:hover {
   background-color: #777;
 }

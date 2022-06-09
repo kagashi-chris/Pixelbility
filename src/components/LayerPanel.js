@@ -33,7 +33,8 @@ export default class LayerPanel extends Component {
         {this.state.showPanel === true ? (
           <EditLayerPanel
             handleOpenEditPanel={this.handleOpenEditPanel}
-            img={this.props}
+            prop={this.props.prop}
+            idx={this._reactInternals.key}
           />
         ) : (
           ""
