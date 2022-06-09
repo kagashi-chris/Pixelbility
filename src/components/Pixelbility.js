@@ -33,7 +33,11 @@ export default class Pixelbility extends Component {
       <div className="main-app-panel">
         <div className="main-app-panel-1">
           {/* for resizing and editing image */}
-          <canvas ref={this.canvasRef} id="tempCanvas" className=""></canvas>
+          <canvas
+            ref={this.canvasRef}
+            id="tempCanvas"
+            className="hidden"
+          ></canvas>
           <ToolImportImagePanel
             img={this.state.img}
             imgHandler={this.imgHandler}
