@@ -43,207 +43,44 @@ form div {
   display: inline-block;
 }
 
-.hidden {
-  visibility: hidden;
-}
-/**********************************/
-/*HEADER*/
-/**********************************/
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  background-color: #222;
-  align-items: center;
-  padding: 0 2.4rem;
-  height: 48px;
-}
-
-.logo {
-  height: 2.4rem;
-}
-/**********************************/
-/*NAV*/
-/**********************************/
-
-.main-nav {
-  list-style: none;
-  display: flex;
-  gap: 3.2rem;
-}
-
-.main-nav a:link,
-.main-nav a:visited {
-  text-decoration: none;
-  color: #fff;
-  font-weight: 500;
-  font-size: 1.2rem;
-  transition: all 0.3s;
-}
-
-.main-nav a:visited:hover {
-  color: rgb(168, 219, 219);
-}
-
-/**********************************/
-/*MAIN APP PANELS*/
-/**********************************/
-
-.main-app-panel {
-  background-color: #999;
-}
-
-.main-app-panel-1 {
-  height: calc(100vh - 48px);
-  width: 100vw;
-  display: grid;
-  background-color: #777;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 3fr 1fr;
-}
-
-.toolMainViewPanel {
-  background-color: #333;
-  grid-column: 2/-2;
-  display: flex;
-  padding: 2%;
-  position: relative;
-}
-
-.toolMainViewPanel canvas {
-  margin: auto;
-  background-color: #fff;
-  image-rendering: pixelated;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: crisp-edges;
-}
-
-.toolImportImagePanel {
-  background-color: #444;
-  grid-column: 1/2;
-}
-
-.toolEditLayersPanel {
-  background-color: #555;
-}
-
-.color-box {
-  border: solid 2px white;
-  margin-top: 1rem;
-  margin-left: 1rem;
-}
-
-#seperate-image:hover {
-  background-color: #777;
-}
-
-#seperate-image {
+.logo-panel {
+  left: 1rem;
+  top: 1rem;
   width: 100%;
-  height: 2.5rem;
-  background-color: #333;
-  color: white;
-}
-
-#tempCanvas {
-  position: absolute;
-  top: 500px;
-  background-color: #fff;
-}
-
-#layer-container {
-  width: 100%;
-  height: calc(100% - 5.5rem);
-  background-color: #444;
-  border-left: solid 0.2rem #222;
-  border-right: solid 0.2rem #222;
-  border-bottom: solid 0.2rem #222;
-  overflow-y: auto;
-}
-
-.layerPanel {
-  margin-top: 2px;
-  width: 100%;
-  height: 5rem;
-  color: #fff;
-  background-color: #222;
-  display: flex;
-  align-items: center;
-}
-
-.layerPanel button {
-  width: 2rem;
-  height: 100%;
-  background-color: #333;
-  color: #fff;
-}
-
-.edit-panel {
-  width: 16rem;
-  height: 20rem;
-  position: absolute;
-  background-color: #222;
-  transform: translate(-16rem, 7.5rem);
-  align-content: center;
-}
-.edit-panel label input {
-  margin: 0 auto;
-}
-
-.edit-panel-elements {
-  margin-top: 2rem;
-}
-
-.colors-container {
-  margin-top: 1rem;
-  border-top: solid 1px white;
-  width: 100%;
-  height: 50%;
-}
-
-.layerPanelElements {
-  margin-left: 1rem;
-}
-
-.layerImage {
-  height: 48px;
-  width: 48px;
-  background-color: #fff;
-}
-
-#layer-container-footer {
-  width: 100%;
-  height: 3rem;
-  background-color: #222;
-}
-
-.toolGeneratedImagePanel {
-  background-color: #666;
-  grid-row: 2;
-  grid-column: 1/-1;
-}
-
-#generate-image-top-bar {
-  width: 100%;
+  max-width: 24rem;
   height: 2rem;
-  background-color: #111;
-  display: flex;
+  position: absolute;
+  background-color: white;
+  color: #333;
+  filter: drop-shadow(0 0 0.5rem rgb(200, 200, 200));
 }
 
-#generate-image-main-content {
-  display: flex;
-  height: calc(100% - 2rem);
-  width: 100%;
-  overflow-x: auto;
+.import-img-panel {
+  border-radius: 15px;
+  width: 15rem;
+  position: absolute;
+  left: 1rem;
+  top: 15rem;
+  filter: drop-shadow(0 0 0.5rem rgb(200, 200, 200));
 }
 
-.generated-image {
-  margin: auto 1rem;
-  color: #111;
-  font-weight: 500;
-  text-align: center;
+#my_file {
+  display: none;
 }
 
-#generate-image-main-content canvas {
-  background-color: #fff;
-  border: solid 5px #111;
+.imported_image {
+  border: solid 1px #333;
+  width: 3rem;
+  height: 3rem;
+}
+
+#main_canvas {
+  width: 40rem;
+  height: 40rem;
+  background-color: aqua;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 10%);
 }

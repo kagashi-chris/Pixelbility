@@ -8,8 +8,6 @@ export default class ToolImportImagePanel extends Component {
   }
 
   handleFileReader(event) {
-    // let file = event.target.files[0];
-    // this.props.imgHandler(URL.createObjectURL(file));
     const FR = new FileReader();
     let props = this.props;
     FR.onload = function (event) {
