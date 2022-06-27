@@ -4,10 +4,6 @@ import { ImportImagePanel } from "./ImportImagePanel";
 import { MainCanvas } from "./MainCanvas";
 import { EditImagePanel } from "./EditImagePanel";
 import { GenerateImagePanel } from "./GenerateImagePanel";
-// import ToolImportImagePanel from "./ToolImportImagePanel";
-// import ToolMainViewPanel from "./ToolMainViewPanel";
-// import ToolEditLayersPanel from "./ToolEditLayersPanel";
-// import ToolGeneratedImagePanel from "./ToolGeneratedImagePanel";
 
 export const Pixelbility = () => {
   //this is an array of groups of images. example:background, foreground, etc
