@@ -90,7 +90,7 @@ export default class ToolEditLayersPanel extends Component {
 
     return (
       <div className="toolEditLayersPanel">
-        <button id="seperate-image" onClick={this.handleImageSeperation}>
+        <button id="seperate-image" onClick={""}>
           Seperate Image
         </button>
         <div id="layer-container">

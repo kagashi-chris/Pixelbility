@@ -1,61 +1,71 @@
 import React, { Component } from "react";
-import ToolImportImagePanel from "./ToolImportImagePanel";
-import ToolMainViewPanel from "./ToolMainViewPanel";
-import ToolEditLayersPanel from "./ToolEditLayersPanel";
-import ToolGeneratedImagePanel from "./ToolGeneratedImagePanel";
+import { LogoPanel } from "./LogoPanel";
+import { ImportImagePanel } from "./ImportImagePanel";
+import { MainCanvas } from "./MainCanvas";
+import { EditImagePanel } from "./EditImagePanel";
+import { GenerateImagePanel } from "./GenerateImagePanel";
+// import ToolImportImagePanel from "./ToolImportImagePanel";
+// import ToolMainViewPanel from "./ToolMainViewPanel";
+// import ToolEditLayersPanel from "./ToolEditLayersPanel";
+// import ToolGeneratedImagePanel from "./ToolGeneratedImagePanel";
 
-export default class Pixelbility extends Component {
-  constructor() {
-    super();
-    this.state = {
-      img: {
-        srcImage: null,
-        layerImages: [],
-        displayImage: [],
-        selectedImgIdx: 0,
-        constraints: [],
-      },
-    };
-    this.imgHandler = this.imgHandler.bind(this);
-    this.canvasRef = React.createRef(null);
-  }
+export const Pixelbility = () => {
+  //this is an array of groups of images. example:background, foreground, etc
+  const [imageGroups, setImageGroups] = React.useState([
+    { name: "Unassigned", imgs: [], open: true, imgLayers: [] },
+  ]);
+  //the indexes of the selected image from left panel goes in here. -1 for unassinged image group
+  const [selectedGroups, setSelectedGroups] = React.useState([-1]);
+  //useus this state to determine to weather main canvas shows base image or selected generated image
+  const [selectedGeneratedImagesIdx, setGeneratedImageIdx] = React.useState(0);
 
-  imgHandler(targetName, targetData) {
-    this.setState({ ...this.state, [targetName]: targetData }, () => {
-      if (this.state.img.displayImage[0] !== undefined) {
-        console.log("updated state", this.state.img);
-      }
-    });
-  }
+  const [generatedImages, setGeneratedImages] = React.useState([[]]);
 
-  render() {
-    return (
-      <div className="main-app-panel">
-        <div className="main-app-panel-1">
-          {/* for resizing and editing image */}
-          <canvas
-            ref={this.canvasRef}
-            id="tempCanvas"
-            className="hidden"
-          ></canvas>
-          <ToolImportImagePanel
-            img={this.state.img}
-            imgHandler={this.imgHandler}
-          />
-          <ToolMainViewPanel img={this.state.img} />
-          <ToolEditLayersPanel
-            img={this.state.img}
-            imgHandler={this.imgHandler}
-            canvas={this.canvasRef}
-          />
-          <ToolGeneratedImagePanel
-            img={this.state.img}
-            imgHandler={this.imgHandler}
-          />
-        </div>
-      </div>
-    );
-  }
-}
+  const handleSetState = (setName, newState) => {
+    switch (setName) {
+      case "SET_IMAGE_GROUPS":
+        setImageGroups(newState);
+        break;
+      case "SET_SELECTED_GROUPS":
+        setSelectedGroups(newState);
+        break;
+      case "SET_GENEREATED_IMAGES":
+        setGeneratedImages(newState);
+        break;
+      case "SET_SELECTED_GROUP_IDX":
+        setGeneratedImageIdx(newState);
+        break;
+      default:
+        break;
+    }
+  };
+  return (
+    <div>
+      {console.log("GROUPS", imageGroups)}
+      <MainCanvas
+        selectedGroups={selectedGroups}
+        imgGroup={imageGroups}
+        generatedIdx={selectedGeneratedImagesIdx}
+      />
+      <LogoPanel />
+      <ImportImagePanel
+        generatedImages={generatedImages}
+        selectedGroups={selectedGroups}
+        imageGroups={imageGroups}
+        handleSetState={handleSetState}
+      />
+      <EditImagePanel
+        imageGroups={imageGroups}
+        handleSetState={handleSetState}
+      />
+      <GenerateImagePanel
+        selectedGroups={selectedGroups}
+        generatedImages={generatedImages}
+        imageGroups={imageGroups}
+        handleSetState={handleSetState}
+      />
+    </div>
+  );
+};
 
-// export default Pixelbility;
+export default Pixelbility;
