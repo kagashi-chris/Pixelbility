@@ -24,10 +24,9 @@ export const ImportImagePanel = (props) => {
   const handleAddLayer = () => {
     props.handleSetState("SET_IMAGE_GROUPS", [
       ...images,
-      { name: `Group ${images.length}`, imgs: [], open: true },
+      { name: `Group ${images.length}`, imgs: [], open: true, imgLayers: [] },
     ]);
     props.handleSetState("SET_SELECTED_GROUPS", [...selectedGroups, -1]);
-    props.handleSetState("SET_IMAGE_LAYERS", [...props.imageLayers, [[[]]]]);
   };
 
   //activates when add image button is clicked. will trigger input.click to open file add
@@ -57,6 +56,7 @@ export const ImportImagePanel = (props) => {
     layers[e.target.value].imgs.push(img);
     props.handleSetState("SET_IMAGE_GROUPS", layers);
 
+    //TODO add the ability to move imgLayers
     manageSelectedGroups(layers);
   };
 

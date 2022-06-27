@@ -102,3 +102,7 @@ form div {
 #tempCanvas {
   display: none;
 }
+
+.layerImage {
+  background-color: #555;
+}

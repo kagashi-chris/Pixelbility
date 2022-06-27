@@ -8,10 +8,12 @@ import ArtTrackIcon from "@mui/icons-material/ArtTrack";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import { Divider } from "@mui/material";
+import { LayerCanvas } from "./LayerCanvas";
 
 export const EditImagePanel = (props) => {
   const [open, setOpen] = React.useState(true);
   const canvasRef = useRef(null);
+  const layerImagered = useRef(null);
 
   const handleClick = () => {
     setOpen(!open);
@@ -79,9 +81,12 @@ export const EditImagePanel = (props) => {
           constraintlist.push({ keepOriginColor: false, colorConstraints: [] });
         }
 
-        let imageLayers = [...props.imageLayers];
-        imageLayers[i][j] = canvasList;
-        props.handleSetState("SET_IMAGE_LAYERS", imageLayers);
+        let imageGroups = [...props.imageGroups];
+        imageGroups[i].imgLayers = [
+          ...imageGroups[i].imgLayers,
+          [...canvasList],
+        ];
+        props.handleSetState("SET_IMAGE_GROUPS", imageGroups);
       }
     }
   };
@@ -104,34 +109,52 @@ export const EditImagePanel = (props) => {
           <ListItemText primary="Separate Image" />
         </ListItemButton>
         <Divider />
-        {props.imageLayers.map((layer, layerIdx) => {
-          if (layerIdx !== 0) {
-            return (
-              <div key={layerIdx}>
-                <ListItemButton onClick={handleClick}>
-                  <ListItemText primary={props.imageGroups[layerIdx].name} />
-                  {open ? <ExpandLess /> : <ExpandMore />}
-                </ListItemButton>
-                <Collapse in={open} timeout="auto" unmountOnExit>
-                  <List component="div" disablePadding>
-                    {props.imageGroups[layerIdx].imgs.map((image, imageIdx) => {
-                      return (
-                        <div key={imageIdx}>
-                          <ListItemButton sx={{ pl: 4 }} onClick={handleClick}>
-                            <ListItemText primary={`Image ${imageIdx + 1}`} />
-                            {open ? <ExpandLess /> : <ExpandMore />}
-                          </ListItemButton>
-                          <Collapse in={open} timeout="auto" unmountOnExit>
-                            <List component="div" disablePadding></List>
-                          </Collapse>
-                        </div>
-                      );
-                    })}
-                  </List>
-                </Collapse>
-              </div>
-            );
-          }
+        {props.imageGroups.map((group, groupIdx) => {
+          return (
+            <div key={groupIdx}>
+              <ListItemButton
+                onClick={() => {
+                  handleClick();
+                }}
+              >
+                <ListItemText primary={group.name} />
+                {open ? <ExpandLess /> : <ExpandMore />}
+              </ListItemButton>
+              <Collapse in={open} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  {group.imgs.map((img, imgIdx) => {
+                    return (
+                      <div key={imgIdx}>
+                        <ListItemButton sx={{ pl: 4 }}>
+                          {console.log(group.imgLayers)}
+                          <ListItemText primary={`Image ${imgIdx + 1}`} />
+                          {open ? <ExpandLess /> : <ExpandMore />}
+                        </ListItemButton>
+                        <Collapse in={open} timeout="auto" unmountOnExit>
+                          <List component="div" disablePadding>
+                            {group.imgLayers[imgIdx]
+                              ? group.imgLayers[imgIdx].map((part, partIdx) => {
+                                  return (
+                                    <ListItemButton
+                                      key={partIdx}
+                                      sx={{ pl: 8 }}
+                                    >
+                                      <LayerCanvas
+                                        img={group.imgLayers[imgIdx][partIdx]}
+                                      />
+                                    </ListItemButton>
+                                  );
+                                })
+                              : ""}
+                          </List>
+                        </Collapse>
+                      </div>
+                    );
+                  })}
+                </List>
+              </Collapse>
+            </div>
+          );
         })}
       </List>
     </div>
