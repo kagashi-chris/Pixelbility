@@ -106,3 +106,25 @@ form div {
 .layerImage {
   background-color: #555;
 }
+
+.generate_image_panel {
+  border-radius: 15px;
+  width: 68rem;
+  height: 8rem;
+  background-color: rgba(223, 223, 223, 0.5);
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+#generate_btn {
+  position: fixed;
+  top: -2rem;
+  left: 0;
+}
+
+#generatedImgContainer {
+  display: flex;
+  flex-direction: row;
+}

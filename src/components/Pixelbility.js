@@ -3,6 +3,7 @@ import { LogoPanel } from "./LogoPanel";
 import { ImportImagePanel } from "./ImportImagePanel";
 import { MainCanvas } from "./MainCanvas";
 import { EditImagePanel } from "./EditImagePanel";
+import { GenerateImagePanel } from "./GenerateImagePanel";
 // import ToolImportImagePanel from "./ToolImportImagePanel";
 // import ToolMainViewPanel from "./ToolMainViewPanel";
 // import ToolEditLayersPanel from "./ToolEditLayersPanel";
@@ -18,6 +19,8 @@ export const Pixelbility = () => {
   //useus this state to determine to weather main canvas shows base image or selected generated image
   const [selectedGeneratedImagesIdx, setGeneratedImageIdx] = React.useState(0);
 
+  const [generatedImages, setGeneratedImages] = React.useState([]);
+
   const handleSetState = (setName, newState) => {
     switch (setName) {
       case "SET_IMAGE_GROUPS":
@@ -25,6 +28,9 @@ export const Pixelbility = () => {
         break;
       case "SET_SELECTED_GROUPS":
         setSelectedGroups(newState);
+        break;
+      case "SET_GENEREATED_IMAGES":
+        setGeneratedImages(newState);
         break;
       default:
         break;
@@ -45,6 +51,11 @@ export const Pixelbility = () => {
         handleSetState={handleSetState}
       />
       <EditImagePanel
+        imageGroups={imageGroups}
+        handleSetState={handleSetState}
+      />
+      <GenerateImagePanel
+        generatedImages={generatedImages}
         imageGroups={imageGroups}
         handleSetState={handleSetState}
       />
