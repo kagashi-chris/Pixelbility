@@ -27,6 +27,7 @@ export const ImportImagePanel = (props) => {
       { name: `Group ${images.length}`, imgs: [], open: true },
     ]);
     props.handleSetState("SET_SELECTED_GROUPS", [...selectedGroups, -1]);
+    props.handleSetState("SET_IMAGE_LAYERS", [...props.imageLayers, [[[]]]]);
   };
 
   //activates when add image button is clicked. will trigger input.click to open file add
@@ -50,7 +51,9 @@ export const ImportImagePanel = (props) => {
   //changes which  group the image belongs to
   const handleMenuSelect = (e, layerIdx, imgIdx) => {
     let layers = [...images];
-    let img = layers[layerIdx].imgs.splice(imgIdx, 1);
+    // let img =
+    const img = layers[layerIdx].imgs[imgIdx];
+    layers[layerIdx].imgs.splice(imgIdx, 1);
     layers[e.target.value].imgs.push(img);
     props.handleSetState("SET_IMAGE_GROUPS", layers);
 
@@ -73,7 +76,6 @@ export const ImportImagePanel = (props) => {
   };
 
   const manageSelectedGroups = (layers) => {
-    console.log(layers);
     let arr = new Array(layers.length);
     for (let i = 0; i < layers.length; i++) {
       if (i === 0 || layers[i].imgs.length === 0) {

@@ -58,9 +58,21 @@ form div {
 .import-img-panel {
   border-radius: 15px;
   width: 15rem;
-  position: absolute;
+  position: fixed;
   left: 1rem;
   top: 10rem;
+  filter: drop-shadow(0 0 0.5rem rgb(200, 200, 200));
+}
+
+.edit-image {
+  position: absolute;
+  width: 20rem;
+  right: -3rem;
+  top: 10rem;
+}
+.edit-img-panel {
+  border-radius: 15px;
+  width: 15rem;
   filter: drop-shadow(0 0 0.5rem rgb(200, 200, 200));
 }
 
@@ -75,13 +87,18 @@ form div {
 }
 
 #main_canvas {
+  border-radius: 10px;
   width: 40rem;
   height: 40rem;
-  background-color: aqua;
+  background-color: white;
   position: fixed;
   z-index: -1;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -60%);
   filter: drop-shadow(0 0 0.5rem rgb(200, 200, 200));
+}
+
+#tempCanvas {
+  display: none;
 }

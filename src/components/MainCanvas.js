@@ -6,7 +6,6 @@ export const MainCanvas = (props) => {
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
     context.clearRect(0, 0, canvas.width, canvas.height);
-    console.log(props);
     for (let i = 1; i < props.selectedGroups.length; i++) {
       if (props.selectedGroups[i] >= 0) {
         const img = new Image();
@@ -24,7 +23,6 @@ export const MainCanvas = (props) => {
   }, [props.selectedGroups]);
   return (
     <div>
-      {console.log(props)}
       <canvas id="main_canvas" ref={canvasRef}></canvas>
     </div>
   );

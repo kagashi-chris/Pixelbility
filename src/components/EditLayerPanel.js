@@ -35,7 +35,6 @@ export default class EditLayerPanel extends Component {
         arr[this.props.idx].keepOriginColor = v;
         break;
       case "colorConstraints":
-        console.log("inside color const");
         const color = this.colorInputRef.current.value;
         arr[this.props.idx].colorConstraints.push(color);
         break;

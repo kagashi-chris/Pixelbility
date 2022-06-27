@@ -17,6 +17,8 @@ export const Pixelbility = () => {
   const [selectedGroups, setSelectedGroups] = React.useState([-1]);
   //useus this state to determine to weather main canvas shows base image or selected generated image
   const [selectedGeneratedImagesIdx, setGeneratedImageIdx] = React.useState(0);
+  //images separated out into different layers
+  const [imageLayers, setImageLayers] = React.useState([[[]]]);
 
   const handleSetState = (setName, newState) => {
     switch (setName) {
@@ -25,6 +27,9 @@ export const Pixelbility = () => {
         break;
       case "SET_SELECTED_GROUPS":
         setSelectedGroups(newState);
+        break;
+      case "SET_IMAGE_LAYERS":
+        setImageLayers(newState);
         break;
       default:
         break;
@@ -39,11 +44,16 @@ export const Pixelbility = () => {
       />
       <LogoPanel />
       <ImportImagePanel
+        imageLayers={imageLayers}
         selectedGroups={selectedGroups}
         imageGroups={imageGroups}
         handleSetState={handleSetState}
       />
-      {/* <EditImagePanel /> */}
+      <EditImagePanel
+        imageGroups={imageGroups}
+        imageLayers={imageLayers}
+        handleSetState={handleSetState}
+      />
     </div>
   );
 };
