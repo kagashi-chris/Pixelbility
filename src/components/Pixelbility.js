@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { LogoPanel } from "./LogoPanel";
 import { ImportImagePanel } from "./ImportImagePanel";
 import { MainCanvas } from "./MainCanvas";
+import { EditImagePanel } from "./EditImagePanel";
 // import ToolImportImagePanel from "./ToolImportImagePanel";
 // import ToolMainViewPanel from "./ToolMainViewPanel";
 // import ToolEditLayersPanel from "./ToolEditLayersPanel";
@@ -22,18 +23,27 @@ export const Pixelbility = () => {
       case "SET_IMAGE_GROUPS":
         setImageGroups(newState);
         break;
+      case "SET_SELECTED_GROUPS":
+        setSelectedGroups(newState);
+        break;
       default:
         break;
     }
   };
   return (
     <div>
-      <MainCanvas />
+      <MainCanvas
+        selectedGroups={selectedGroups}
+        imgGroup={imageGroups}
+        generatedIdx={selectedGeneratedImagesIdx}
+      />
       <LogoPanel />
       <ImportImagePanel
+        selectedGroups={selectedGroups}
         imageGroups={imageGroups}
         handleSetState={handleSetState}
       />
+      {/* <EditImagePanel /> */}
     </div>
   );
 };

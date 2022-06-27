@@ -18,6 +18,7 @@ export const ImportImagePanel = (props) => {
   const inputRef = useRef(null);
   const menuRef = useRef(null);
   const images = props.imageGroups;
+  const selectedGroups = props.selectedGroups;
 
   //add a new group
   const handleAddLayer = () => {
@@ -25,6 +26,7 @@ export const ImportImagePanel = (props) => {
       ...images,
       { name: `Group ${images.length}`, imgs: [], open: true },
     ]);
+    props.handleSetState("SET_SELECTED_GROUPS", [...selectedGroups, -1]);
   };
 
   //activates when add image button is clicked. will trigger input.click to open file add
@@ -51,6 +53,8 @@ export const ImportImagePanel = (props) => {
     let img = layers[layerIdx].imgs.splice(imgIdx, 1);
     layers[e.target.value].imgs.push(img);
     props.handleSetState("SET_IMAGE_GROUPS", layers);
+
+    manageSelectedGroups(layers);
   };
 
   //expands image groups
@@ -60,6 +64,27 @@ export const ImportImagePanel = (props) => {
     props.handleSetState("SET_IMAGE_GROUPS", layers);
   };
 
+  const handleSelectGroup = (groupIdx, imgIdx) => {
+    if (groupIdx !== 0) {
+      let newGroup = [...selectedGroups];
+      newGroup[groupIdx] = imgIdx;
+      props.handleSetState("SET_SELECTED_GROUPS", newGroup);
+    }
+  };
+
+  const manageSelectedGroups = (layers) => {
+    console.log(layers);
+    let arr = new Array(layers.length);
+    for (let i = 0; i < layers.length; i++) {
+      if (i === 0 || layers[i].imgs.length === 0) {
+        arr[i] = -1;
+      } else {
+        arr[i] = 0;
+      }
+    }
+    props.handleSetState("SET_SELECTED_GROUPS", arr);
+  };
+
   return (
     <List
       sx={{ width: "100%", maxWidth: 260, bgcolor: "background.paper" }}
@@ -67,7 +92,6 @@ export const ImportImagePanel = (props) => {
       aria-labelledby="nested-list-subheader"
       className="import-img-panel"
     >
-      {console.log("PROPS!", props)}
       <ListItemButton onClick={() => handleAddImage()}>
         <input
           type="file"
@@ -103,7 +127,12 @@ export const ImportImagePanel = (props) => {
               <List component="div" disablePadding>
                 {images[idx].imgs.map((img, imgIdx) => {
                   return (
-                    <ListItemButton key={imgIdx}>
+                    <ListItemButton
+                      key={imgIdx}
+                      onClick={() => {
+                        handleSelectGroup(idx, imgIdx);
+                      }}
+                    >
                       <img src={img} alt="" className="imported_image" />
                       <FormControl
                         variant="standard"
