@@ -63,7 +63,7 @@ export const GenerateImagePanel = (props) => {
         >
           Generate Images
         </Button>
-        <div className="generatedImgContainer">
+        <div className="generate-image-main-content">
           {props.generatedImages.map((gImages, idx) => {
             return <GeneratedCanvas imgs={gImages} key={idx} />;
           })}

@@ -19,13 +19,8 @@ export const GeneratedCanvas = (props) => {
   }, []);
 
   return (
-    <div>
-      <canvas
-        width={52}
-        height={52}
-        ref={canvasRef}
-        className="generated-image"
-      ></canvas>
+    <div id="generated-image">
+      <canvas width={80} height={80} ref={canvasRef}></canvas>
     </div>
   );
 };
