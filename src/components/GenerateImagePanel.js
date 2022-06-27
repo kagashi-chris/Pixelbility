@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -8,6 +8,24 @@ import { GeneratedCanvas } from "./GeneratedCanvas";
 
 export const GenerateImagePanel = (props) => {
   const imageGroup = props.imageGroups;
+
+  useEffect(() => {
+    console.log("this being run");
+    let arr = [];
+    for (let i = 0; i < props.selectedGroups.length; i++) {
+      if (props.selectedGroups[i] >= 0) {
+        let imgCanvas = document.createElement("canvas");
+        let imgContext = imgCanvas.getContext("2d");
+        let img = new Image();
+        img.src = props.imageGroups[i].imgs[props.selectedGroups[i]];
+        // arr.push(props.imageGroups[i].imgs[props.selectedGroups[i]]);
+      }
+    }
+    let gImages = [...props.generatedImages];
+    gImages[0] = arr;
+    console.log("gimages", gImages);
+    props.handleSetState("SET_GENEREATED_IMAGES", gImages);
+  }, [props.selectedGroups]);
 
   const handleGenerate = () => {
     let renderArr = [];
