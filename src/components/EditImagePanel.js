@@ -108,54 +108,60 @@ export const EditImagePanel = (props) => {
           </ListItemIcon>
           <ListItemText primary="Separate Image" />
         </ListItemButton>
-        <Divider />
-        {props.imageGroups.map((group, groupIdx) => {
-          return (
-            <div key={groupIdx}>
-              <ListItemButton
-                onClick={() => {
-                  handleClick();
-                }}
-              >
-                <ListItemText primary={group.name} />
-                {open ? <ExpandLess /> : <ExpandMore />}
-              </ListItemButton>
-              <Collapse in={open} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-                  {group.imgs.map((img, imgIdx) => {
-                    return (
-                      <div key={imgIdx}>
-                        <ListItemButton sx={{ pl: 4 }}>
-                          {console.log(group.imgLayers)}
-                          <ListItemText primary={`Image ${imgIdx + 1}`} />
-                          {open ? <ExpandLess /> : <ExpandMore />}
-                        </ListItemButton>
-                        <Collapse in={open} timeout="auto" unmountOnExit>
-                          <List component="div" disablePadding>
-                            {group.imgLayers[imgIdx]
-                              ? group.imgLayers[imgIdx].map((part, partIdx) => {
-                                  return (
-                                    <ListItemButton
-                                      key={partIdx}
-                                      sx={{ pl: 8 }}
-                                    >
-                                      <LayerCanvas
-                                        img={group.imgLayers[imgIdx][partIdx]}
-                                      />
-                                    </ListItemButton>
-                                  );
-                                })
-                              : ""}
-                          </List>
-                        </Collapse>
-                      </div>
-                    );
-                  })}
-                </List>
-              </Collapse>
-            </div>
-          );
-        })}
+        <div className="edit-image-container">
+          <Divider />
+          {props.imageGroups.map((group, groupIdx) => {
+            return (
+              <div key={groupIdx}>
+                <ListItemButton
+                  onClick={() => {
+                    handleClick();
+                  }}
+                >
+                  <ListItemText primary={group.name} />
+                  {open ? <ExpandLess /> : <ExpandMore />}
+                </ListItemButton>
+                <Collapse in={open} timeout="auto" unmountOnExit>
+                  <List component="div" disablePadding>
+                    {group.imgs.map((img, imgIdx) => {
+                      return (
+                        <div key={imgIdx}>
+                          <ListItemButton sx={{ pl: 4 }}>
+                            {console.log(group.imgLayers)}
+                            <ListItemText primary={`Image ${imgIdx + 1}`} />
+                            {open ? <ExpandLess /> : <ExpandMore />}
+                          </ListItemButton>
+                          <Collapse in={open} timeout="auto" unmountOnExit>
+                            <List component="div" disablePadding>
+                              {group.imgLayers[imgIdx]
+                                ? group.imgLayers[imgIdx].map(
+                                    (part, partIdx) => {
+                                      return (
+                                        <ListItemButton
+                                          key={partIdx}
+                                          sx={{ pl: 8 }}
+                                        >
+                                          <LayerCanvas
+                                            img={
+                                              group.imgLayers[imgIdx][partIdx]
+                                            }
+                                          />
+                                        </ListItemButton>
+                                      );
+                                    }
+                                  )
+                                : ""}
+                            </List>
+                          </Collapse>
+                        </div>
+                      );
+                    })}
+                  </List>
+                </Collapse>
+              </div>
+            );
+          })}
+        </div>
       </List>
     </div>
   );

@@ -113,59 +113,61 @@ export const ImportImagePanel = (props) => {
         <ListItemText primary="Add Groups" />
       </ListItemButton>
       <Divider />
-      {images.map((imageGroup, idx) => {
-        return (
-          <div key={idx}>
-            <ListItemButton
-              onClick={() => {
-                handleToggleExpand(idx);
-              }}
-            >
-              <ListItemText primary={imageGroup.name} />
-              <div>{imageGroup.imgs.length}</div>
-              {images[idx].open ? <ExpandLess /> : <ExpandMore />}
-            </ListItemButton>
-            <Collapse in={images[idx].open} timeout="auto" unmountOnExit>
-              <List component="div" disablePadding>
-                {images[idx].imgs.map((img, imgIdx) => {
-                  return (
-                    <ListItemButton
-                      key={imgIdx}
-                      onClick={() => {
-                        handleSelectGroup(idx, imgIdx);
-                      }}
-                    >
-                      <img src={img} alt="" className="imported_image" />
-                      <FormControl
-                        variant="standard"
-                        sx={{ m: 1, minWidth: 120 }}
+      <div className="import-image-container">
+        {images.map((imageGroup, idx) => {
+          return (
+            <div key={idx}>
+              <ListItemButton
+                onClick={() => {
+                  handleToggleExpand(idx);
+                }}
+              >
+                <ListItemText primary={imageGroup.name} />
+                <div>{imageGroup.imgs.length}</div>
+                {images[idx].open ? <ExpandLess /> : <ExpandMore />}
+              </ListItemButton>
+              <Collapse in={images[idx].open} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  {images[idx].imgs.map((img, imgIdx) => {
+                    return (
+                      <ListItemButton
+                        key={imgIdx}
+                        onClick={() => {
+                          handleSelectGroup(idx, imgIdx);
+                        }}
                       >
-                        <InputLabel>Group</InputLabel>
-                        <Select
-                          value={idx}
-                          ref={menuRef}
-                          onChange={(e) => {
-                            handleMenuSelect(e, idx, imgIdx);
-                          }}
-                          label="Age"
+                        <img src={img} alt="" className="imported_image" />
+                        <FormControl
+                          variant="standard"
+                          sx={{ m: 1, minWidth: 120 }}
                         >
-                          {images.map((layer, selectIdx) => {
-                            return (
-                              <MenuItem value={selectIdx} key={selectIdx}>
-                                {layer.name}
-                              </MenuItem>
-                            );
-                          })}
-                        </Select>
-                      </FormControl>
-                    </ListItemButton>
-                  );
-                })}
-              </List>
-            </Collapse>
-          </div>
-        );
-      })}
+                          <InputLabel>Group</InputLabel>
+                          <Select
+                            value={idx}
+                            ref={menuRef}
+                            onChange={(e) => {
+                              handleMenuSelect(e, idx, imgIdx);
+                            }}
+                            label="Age"
+                          >
+                            {images.map((layer, selectIdx) => {
+                              return (
+                                <MenuItem value={selectIdx} key={selectIdx}>
+                                  {layer.name}
+                                </MenuItem>
+                              );
+                            })}
+                          </Select>
+                        </FormControl>
+                      </ListItemButton>
+                    );
+                  })}
+                </List>
+              </Collapse>
+            </div>
+          );
+        })}
+      </div>
     </List>
   );
 };

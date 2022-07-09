@@ -67,8 +67,13 @@ form div {
   filter: drop-shadow(0 0 0.5rem rgb(200, 200, 200));
 }
 
+.import-image-container {
+  overflow-x: auto;
+  max-height: 32rem;
+}
+
 .edit-image {
-  position: absolute;
+  position: fixed;
   width: 20rem;
   right: -3rem;
   top: 10rem;
@@ -77,6 +82,10 @@ form div {
   border-radius: 15px;
   width: 15rem;
   filter: drop-shadow(0 0 0.5rem rgb(200, 200, 200));
+}
+.edit-image-container {
+  max-height: 35rem;
+  overflow-x: auto;
 }
 
 #my_file {
