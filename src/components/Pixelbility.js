@@ -15,7 +15,7 @@ export const Pixelbility = () => {
   //useus this state to determine to weather main canvas shows base image or selected generated image
   const [selectedGeneratedImagesIdx, setGeneratedImageIdx] = React.useState(0);
 
-  const [generatedImages, setGeneratedImages] = React.useState([[]]);
+  const [generatedImages, setGeneratedImages] = React.useState([]);
 
   const handleSetState = (setName, newState) => {
     switch (setName) {
@@ -37,7 +37,6 @@ export const Pixelbility = () => {
   };
   return (
     <div>
-      {console.log("GROUPS", imageGroups)}
       <MainCanvas
         selectedGroups={selectedGroups}
         imgGroup={imageGroups}

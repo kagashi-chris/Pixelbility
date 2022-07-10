@@ -7,26 +7,6 @@ import { Button } from "@mui/material";
 import { GeneratedCanvas } from "./GeneratedCanvas";
 
 export const GenerateImagePanel = (props) => {
-  const imageGroup = props.imageGroups;
-
-  useEffect(() => {
-    console.log("this being run");
-    let arr = [];
-    for (let i = 0; i < props.selectedGroups.length; i++) {
-      if (props.selectedGroups[i] >= 0) {
-        let imgCanvas = document.createElement("canvas");
-        let imgContext = imgCanvas.getContext("2d");
-        let img = new Image();
-        img.src = props.imageGroups[i].imgs[props.selectedGroups[i]];
-        // arr.push(props.imageGroups[i].imgs[props.selectedGroups[i]]);
-      }
-    }
-    let gImages = [...props.generatedImages];
-    gImages[0] = arr;
-    console.log("gimages", gImages);
-    props.handleSetState("SET_GENEREATED_IMAGES", gImages);
-  }, [props.selectedGroups]);
-
   const handleGenerate = () => {
     let renderArr = [];
     for (let i = 1; i < props.imageGroups.length; i++) {
@@ -34,7 +14,6 @@ export const GenerateImagePanel = (props) => {
         Math.random() * props.imageGroups[i].imgLayers.length
       );
       const canvasList = props.imageGroups[i].imgLayers[randNumber];
-      console.log("Canvas list ", canvasList);
       for (let j = 0; j < canvasList.length; j++) {
         const canvas = canvasList[j];
         const r = Math.floor(Math.random() * 256);

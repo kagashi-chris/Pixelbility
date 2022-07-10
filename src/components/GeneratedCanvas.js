@@ -16,7 +16,7 @@ export const GeneratedCanvas = (props) => {
         context.canvas.height
       );
     }
-  }, []);
+  }, [props.imgs]);
 
   return (
     <div id="generated-image">

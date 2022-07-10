@@ -127,7 +127,6 @@ export const EditImagePanel = (props) => {
                       return (
                         <div key={imgIdx}>
                           <ListItemButton sx={{ pl: 4 }}>
-                            {console.log(group.imgLayers)}
                             <ListItemText primary={`Image ${imgIdx + 1}`} />
                             {open ? <ExpandLess /> : <ExpandMore />}
                           </ListItemButton>

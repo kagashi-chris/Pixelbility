@@ -67,11 +67,29 @@ export const ImportImagePanel = (props) => {
     props.handleSetState("SET_IMAGE_GROUPS", layers);
   };
 
+  const manageNewGeneratedImageMain = (arr) => {
+    let newGeneratedImages = [...props.generatedImages];
+    newGeneratedImages[0] = [];
+    for (let i = 1; i < arr.length; i++) {
+      if (arr[i] > -1) {
+        const image = new Image();
+        image.onload = function () {
+          newGeneratedImages[0].push(image);
+          console.log(newGeneratedImages);
+          props.handleSetState("SET_GENEREATED_IMAGES", newGeneratedImages);
+        };
+        image.src = props.imageGroups[i].imgs[arr[i]];
+      }
+    }
+  };
+
   const handleSelectGroup = (groupIdx, imgIdx) => {
     if (groupIdx !== 0) {
       let newGroup = [...selectedGroups];
       newGroup[groupIdx] = imgIdx;
+      console.log("New group?", newGroup);
       props.handleSetState("SET_SELECTED_GROUPS", newGroup);
+      manageNewGeneratedImageMain(newGroup);
     }
   };
 
@@ -85,6 +103,7 @@ export const ImportImagePanel = (props) => {
       }
     }
     props.handleSetState("SET_SELECTED_GROUPS", arr);
+    manageNewGeneratedImageMain(arr);
   };
 
   return (
