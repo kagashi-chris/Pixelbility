@@ -4,7 +4,6 @@ export const LayerCanvas = (props) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    console.log("image changed");
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
     context.imageSmoothingEnabled = false;

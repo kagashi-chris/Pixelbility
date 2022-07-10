@@ -41,6 +41,7 @@ export const Pixelbility = () => {
         selectedGroups={selectedGroups}
         imgGroup={imageGroups}
         generatedIdx={selectedGeneratedImagesIdx}
+        generatedImages={generatedImages}
       />
       <LogoPanel />
       <ImportImagePanel

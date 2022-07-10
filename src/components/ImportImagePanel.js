@@ -75,7 +75,6 @@ export const ImportImagePanel = (props) => {
         const image = new Image();
         image.onload = function () {
           newGeneratedImages[0].push(image);
-          console.log(newGeneratedImages);
           props.handleSetState("SET_GENEREATED_IMAGES", newGeneratedImages);
         };
         image.src = props.imageGroups[i].imgs[arr[i]];
@@ -87,7 +86,6 @@ export const ImportImagePanel = (props) => {
     if (groupIdx !== 0) {
       let newGroup = [...selectedGroups];
       newGroup[groupIdx] = imgIdx;
-      console.log("New group?", newGroup);
       props.handleSetState("SET_SELECTED_GROUPS", newGroup);
       manageNewGeneratedImageMain(newGroup);
     }

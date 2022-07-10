@@ -18,9 +18,18 @@ export const GeneratedCanvas = (props) => {
     }
   }, [props.imgs]);
 
+  const handleOnClick = () => {
+    props.handleSetState("SET_SELECTED_GROUP_IDX", props.idx);
+  };
+
   return (
     <div id="generated-image">
-      <canvas width={80} height={80} ref={canvasRef}></canvas>
+      <canvas
+        width={80}
+        height={80}
+        ref={canvasRef}
+        onClick={() => handleOnClick()}
+      ></canvas>
     </div>
   );
 };
