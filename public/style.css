@@ -58,6 +58,11 @@ form div {
   filter: drop-shadow(0 0 0.5rem rgb(200, 200, 200));
 }
 
+.Import-Default {
+  left: 2rem;
+  top: 8rem;
+}
+
 .import-img-panel {
   border-radius: 15px;
   width: 15rem;
