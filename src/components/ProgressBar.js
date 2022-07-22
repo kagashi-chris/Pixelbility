@@ -33,7 +33,6 @@ export const ProgressBar = (props) => {
         hasImage = true;
       }
     }
-    console.log(props.imageGroups);
     if (hasImage) importRef.current.className = "active";
     if (hasGroup) groupRef.current.className = "active";
     if (hasSeparated) separateRef.current.className = "active";
