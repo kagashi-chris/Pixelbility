@@ -112,7 +112,7 @@ form div {
   z-index: -1;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -60%);
+  transform: translate(-50%, -55%);
   filter: drop-shadow(0 0 0.5rem rgb(200, 200, 200));
 }
 
@@ -144,4 +144,69 @@ form div {
 .generate-image-main-content {
   display: flex;
   overflow-x: auto;
+}
+
+.progress-container {
+  width: 30%;
+  color: #333;
+  background: "white";
+  font-family: "Roboto", sans-serif;
+  position: absolute;
+  top: 0.25rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.progressbar {
+  counter-reset: step;
+  color: "#333";
+}
+
+.progressbar li {
+  position: relative;
+  list-style: none;
+  float: left;
+  width: 25%;
+  text-align: center;
+}
+
+/* Circles */
+.progressbar li:before {
+  content: "X";
+  color: white;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #2979ff;
+  display: block;
+  text-align: center;
+  margin: 0 auto 10px auto;
+  border-radius: 50%;
+  background-color: #2979ff;
+
+  /* Center # in circle */
+  line-height: 39px;
+}
+
+.progressbar li:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: #2979ff;
+  top: 20px; /*half of height Parent (li) */
+  left: -50%;
+  z-index: -1;
+}
+
+.progressbar li:first-child:after {
+  content: none;
+}
+
+.progressbar li.active:before {
+  background: #00e676;
+  content: "✔";
+}
+
+.progressbar li.active + li:after {
+  background: #00e676;
 }

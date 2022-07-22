@@ -4,6 +4,7 @@ import { ImportImagePanel } from "./ImportImagePanel";
 import { MainCanvas } from "./MainCanvas";
 import { EditImagePanel } from "./EditImagePanel";
 import { GenerateImagePanel } from "./GenerateImagePanel";
+import { ProgressBar } from "./ProgressBar";
 
 export const Pixelbility = () => {
   //this is an array of groups of images. example:background, foreground, etc
@@ -37,12 +38,17 @@ export const Pixelbility = () => {
   };
   return (
     <div>
+      <ProgressBar
+        generatedImages={generatedImages}
+        imageGroups={imageGroups}
+      />
       <MainCanvas
         selectedGroups={selectedGroups}
         imgGroup={imageGroups}
         generatedIdx={selectedGeneratedImagesIdx}
         generatedImages={generatedImages}
       />
+
       <LogoPanel />
 
       <ImportImagePanel
