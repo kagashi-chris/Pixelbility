@@ -54,11 +54,11 @@ export const ImportImagePanel = (props) => {
 
   const handleAddExampleImages = async () => {
     const arr = [
-      "images/background1.png",
-      "images/background2.png",
-      "images/background3.png",
-      "images/reactCat3.png",
-      "images/reactdog.png",
+      `${process.env.PUBLIC_URL}/images/background1.png`,
+      `${process.env.PUBLIC_URL}/images/background2.png`,
+      `${process.env.PUBLIC_URL}/images/background3.png`,
+      `${process.env.PUBLIC_URL}/images/reactCat3.png`,
+      `${process.env.PUBLIC_URL}/images/reactdog.png`,
     ];
     let dataUrlArr = [];
     let blob0 = await fetch(arr[0]).then((r) => r.blob());
