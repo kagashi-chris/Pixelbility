@@ -41,8 +41,15 @@ export const ImportImagePanel = (props) => {
       imgLayers: [],
     };
     let newImgGroups = [defaultGroup, group1, group2];
+
     props.handleSetState("SET_IMAGE_GROUPS", newImgGroups);
-    props.handleSetState("SET_SELECTED_GROUPS", [-1, 0, -1]);
+    const selectedGroups = [-1, 0, 0];
+    props.handleSetState("SET_SELECTED_GROUPS", selectedGroups);
+    const img1 = new Image();
+    const img2 = new Image();
+    img1.src = dataUrl[0];
+    img2.src = dataUrl[3];
+    props.handleSetState("SET_GENEREATED_IMAGES", [[img1, img2]]);
   };
 
   const handleAddExampleImages = async () => {
