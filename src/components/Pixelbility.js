@@ -4,7 +4,6 @@ import { ImportImagePanel } from "./ImportImagePanel";
 import { MainCanvas } from "./MainCanvas";
 import { EditImagePanel } from "./EditImagePanel";
 import { GenerateImagePanel } from "./GenerateImagePanel";
-import { Button } from "@mui/material";
 
 export const Pixelbility = () => {
   //this is an array of groups of images. example:background, foreground, etc
@@ -45,9 +44,7 @@ export const Pixelbility = () => {
         generatedImages={generatedImages}
       />
       <LogoPanel />
-      <Button variant="contained" className="Import-Default">
-        Import Example Images
-      </Button>
+
       <ImportImagePanel
         generatedImages={generatedImages}
         selectedGroups={selectedGroups}
